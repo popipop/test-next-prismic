@@ -30,6 +30,10 @@ BlogHome.getInitialProps = async context => {
     { orderings: '[my.post.date desc]' }
   )
 
+  if (context.res) {
+    context.res.setHeader('Cache-Control', 's-maxage=1, stale-while-revalidate')
+  }
+
   return { home, posts }
 }
 
